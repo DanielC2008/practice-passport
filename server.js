@@ -5,6 +5,7 @@ const app = express();
 const routes = require('./routes/');
 const bodyParser = require('body-parser');
 const port = process.env.PORT || 3000;
+const { connect } = require('./db/database');
 /////////////////////////////////////////
 
 
@@ -27,5 +28,9 @@ app.use(routes);
 
 
 /////////////////////////////////////////
-app.listen(port, () => console.log(`Listening on port ${port}`));
+connect()
+  .then(() => {
+    app.listen(port, () => console.log(`Listening on port ${port}`));
+  })
+  .catch(console.error);
 /////////////////////////////////////////
