@@ -3,6 +3,13 @@
 const mongoose = require('mongoose');
 
 module.exports = mongoose.model('User', {
-  email: String,
-  password: String
+  email: {
+    required: true,
+    type: String
+  },
+  password: {
+    required: true,
+    type: String
+  }
 })
+
